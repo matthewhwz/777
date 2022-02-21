@@ -1,0 +1,151 @@
+\section{Appendix}
+\subsection{Additional Data, Results and Programs for Section 3}
+The range of $p$ for the worse case at sample 2 to 100 is show below:
+\begin{longtable}{p{3cm}p{5cm}p{3cm}p{5cm}}
+\toprule
+\textbf{Group size}&\textbf{Range of p}&\textbf{Group size}&\textbf{Range of p}\\
+\toprule
+2&$p<0.292893$&52&$p<0.07317$\\\midrule
+3&$p<0.306639$&53&$p<0.072174$\\\midrule
+4&$p<0.292893$&54&$p<0.071208$\\\midrule
+5&$p<0.27522$&55&$p<0.07027$\\\midrule
+6&$p<0.258164$&56&$p<0.069359$\\\midrule
+7&$p<0.242693$&57&$p<0.068474$\\\midrule
+8&$p<0.228895$&58&$p<0.067613$\\\midrule
+9&$p<0.216619$&59&$p<0.066777$\\\midrule
+10&$p<0.205672$&60&$p<0.065963$\\\midrule
+11&$p<0.195867$&61&$p<0.065171$\\\midrule
+12&$p<0.187042$&62&$p<0.064399$\\\midrule
+13&$p<0.179059$&63&$p<0.063648$\\\midrule
+14&$p<0.171803$&64&$p<0.062916$\\\midrule
+15&$p<0.165178$&65&$p<0.062203$\\\midrule
+16&$p<0.159104$&66&$p<0.061507$\\\midrule
+17&$p<0.153512$&67&$p<0.060828$\\\midrule
+18&$p<0.148347$&68&$p<0.060166$\\\midrule
+19&$p<0.14356$&69&$p<0.059519$\\\midrule
+20&$p<0.139108$&70&$p<0.058888$\\\midrule
+21&$p<0.134958$&71&$p<0.058271$\\\midrule
+22&$p<0.131078$&72&$p<0.057668$\\\midrule
+23&$p<0.127442$&73&$p<0.05708$\\\midrule
+24&$p<0.124026$&74&$p<0.056504$\\\midrule
+25&$p<0.120811$&75&$p<0.055941$\\\midrule
+26&$p<0.117778$&76&$p<0.05539$\\\midrule
+27&$p<0.114912$&77&$p<0.054851$\\\midrule
+28&$p<0.112199$&78&$p<0.054324$\\\midrule
+29&$p<0.109626$&79&$p<0.053808$\\\midrule
+30&$p<0.107183$&80&$p<0.053302$\\\midrule
+31&$p<0.104859$&81&$p<0.052807$\\\midrule
+32&$p<0.102645$&82&$p<0.052322$\\\midrule
+33&$p<0.100535$&83&$p<0.051847$\\\midrule
+34&$p<0.098519$&84&$p<0.051381$\\\midrule
+35&$p<0.096592$&85&$p<0.050924$\\\midrule
+36&$p<0.094748$&86&$p<0.050476$\\\midrule
+37&$p<0.092981$&87&$p<0.050037$\\\midrule
+38&$p<0.091287$&88&$p<0.049606$\\\midrule
+39&$p<0.08966$&89&$p<0.049183$\\\midrule
+40&$p<0.088097$&90&$p<0.048769$\\\midrule
+41&$p<0.086594$&91&$p<0.048361$\\\midrule
+42&$p<0.085147$&92&$p<0.047962$\\\midrule
+43&$p<0.083753$&93&$p<0.047569$\\\midrule
+44&$p<0.08241$&94&$p<0.047183$\\\midrule
+45&$p<0.081113$&95&$p<0.046805$\\\midrule
+46&$p<0.079862$&96&$p<0.046433$\\\midrule
+47&$p<0.078653$&97&$p<0.046067$\\\midrule
+48&$p<0.077483$&98&$p<0.045708$\\\midrule
+49&$p<0.076353$&99&$p<0.045355$\\\midrule
+50&$p<0.075258$&100&$p<0.045007$\\\midrule
+51&$p<0.074198$&&\\
+\bottomrule
+\end{longtable}
+
+\subsection*{Codes}
+\\
+\begin{tabular}{p{17cm}}
+\toprule
+\textbf{Find the equation of any number and calculating it using sympy}\\
+\bottomrule
+\end{tabular}
+\begin{lstlisting}[language=Python]
+import sympy
+from sympy.abc import p
+from sympy import *
+import multiprocessing
+
+def form_series(n):
+  """
+  This is an inner function which formats the
+  terms of the general term.
+  """
+  def formatting(next_term, coeffs):
+    if next_term == 1:
+      coeffs.insert(0, "")
+    else:
+      coeffs.insert(0, next_term)
+
+      if coeffs[1] == "^0" and coeffs[2] == "^0":
+        return coeffs[0]
+      elif coeffs[1] == "^0":
+        return "{}(1-p){}".format(coeffs[0], coeffs[2])
+      elif coeffs[2] == "^0":
+        return "{}p{}".format(coeffs[0], coeffs[1])
+      elif coeffs[1] == "^1" and coeffs[2] == "^1":
+        return "{}p*(1-p)*".format(coeffs[0])
+      elif coeffs[1] == "^1":
+        return "*{}p*(1-p){}".format(coeffs[0], coeffs[2])
+      elif coeffs[2] == "^1":
+        return "p{}*(1-p)".format(coeffs[0], coeffs[1])
+      return "{}*p{}*(1-p){}".format(coeffs[0], coeffs[1], coeffs[2])
+
+    # Initializing a list named as "series"
+    series = list()
+
+    # Calculating the First Term, Formatting it
+    # and Appending it to the Series
+    first_term = pow(1, n)
+    coeffs = ["^" + str(n), "^0"]
+    series.append(formatting(first_term, coeffs) + " + ")
+
+    next_term = first_term
+
+    # Calculating, Formatting and Appending
+    # the remaining terms.
+    for i in range(1, n + 1):
+
+      # We can find next term using nCr
+      next_term = binomial(str(n),str(i))
+
+      # Pre-formatted list creation
+      coeffs = ["" if x == 1 else "^" + str(x) for x in [n - i, i]]
+
+      # Append till last previous term is not reached
+      if i != n and i != (n-1):
+        series.append(formatting(next_term, coeffs) + " + ")
+      # Append the last previous term
+      elif i == (n-1):
+        series.append(formatting(next_term, coeffs) + ") + ")
+      # Append the last term
+      else:
+        series.append(formatting(next_term, coeffs))
+
+    # Adding(n+1)*( in front of the equation
+    front="("+str(n)+"+1)*("
+    mid =str("".join(series)).replace("  ","")
+    # Joining the series as a string
+    expression = front+mid
+    # simplifying the expression, -n so that it can be = 0
+    exp = sympy.simplify(expression)-n
+    #Replacing ** to ^ to match matlab syntax
+    expmatlab = "double(solve("+str(exp).replace("**","^")+",p))"
+    #Print the expression
+    print(expmatlab)
+
+if __name__ == '__main__':
+  #run the program for n = 2 to 100
+  for n in range(2,101):
+    p = multiprocessing.Process(target=form_series(n))
+    p.start()
+\end{lstlisting}
+\hrule
+\\
+\\
+By inserting the results generated into MATLAB, we can successfully obtain the result stated on the table within a small amount of time.

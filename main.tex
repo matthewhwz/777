@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{pgfplots}
+\usepackage{times} 
+\usepackage{xurl}
+\usepackage{longtable}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{codeblue}{rgb}{0.5,0.9,0.9}
+
+\lstdefinestyle{mystyle}{
+  commentstyle=\large\color{codeblue},
+  keywordstyle=\large\color{codegreen},
+  numberstyle=\large\color{codegray},
+  stringstyle=\large\color{codepurple},
+  basicstyle=\ttfamily\footnotesize\large,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=12pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+}
+
+\lstset{style=mystyle}
+\geometry{left=2cm,right=2cm,top=2cm,bottom=2cm}
+\usepgfplotslibrary{external}
+\tikzexternalize
+
+\begin{document}
+\large
+\input{Cover}
+\tableofcontents
+\newpage
+\input{Introduction}
+\input{Definition and Assumption}
+\input{Simple Model}
+
+\section{How if the number of samples is large?}
+\section{Efficient of different proposed methods}
+\input{Conclusion}
+\newpage
+\input{Refelection}
+\newpage
+\input{References}
+\newpage
+\input{Appendix}
+
+\end{document}

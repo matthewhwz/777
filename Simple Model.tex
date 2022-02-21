@@ -1,0 +1,25 @@
+\section{Simple model}
+We start with the simplest form of this problem. With a fixed number of people waiting to be tested, when does it take fewer total tests if the samples are pooled and tested together first. Since $p$ is the infection rate , the probability of not infected will be $(1-p)$.
+\input{Simple model 234/simple2}
+\input{Simple model 234/worse2}
+\input{Simple model 234/simple3}
+\input{Simple model 234/worse3}
+\input{Simple model 234/simple4}
+\input{Simple model 234/worse4}
+\input{Simple model 234/general term}
+\input{Simple model 234/results}
+
+\subsection{Summary}
+\begin{enumerate}
+  \item We successfully build the simplest from of our model when the group size is equal to 2, 3 and 4, considered different situations and analyzed the result.
+  \item From the data calculated, we discovered some interesting patterns:
+  \begin{enumerate}
+     \item In ideal solution, the requirement of the infection rate $p$ increases (must be lower) as the groups size increases. The worse case solution can get the same conclusion after the group size is greater than 4.
+     \item The difference of expected value of test between the ideal test and the worse case went smaller and smaller while the group size increases.
+    \end{enumerate}
+  \item We also discovered some disadvantages of our model: 
+  \begin{enumerate}
+     \item We need to calculate the expected value for every group size if we need to compare the efficiency of different group sizes.
+     \item As we can only find the range of $p$, we cannot find the maximum group size for a certain inflection rate $p$ by this method easily without advanced analysis.
+    \end{enumerate}
+\end{enumerate}

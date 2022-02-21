@@ -1,0 +1,27 @@
+\subsection{General term of the Worse Case}
+As the method mentioned above, we are considering if the first grouping test is positive, the samples had to be retested individually. We did not include the special case, and in fact this make our calculation much easier. As the inflection rate is $p$ and the rate of not inflected is $(1-p)$, we know that all the combinations of the possibilities can be found with $(p+(1-p))^n$. Which is not useful then as we need to locate the special case. As we are not considering it, with less complexity, we can modify a general term to find out $T(p)$ for any group size $n$ by following steps.
+\\
+\\
+Expanding $(p+(1-p))^n$:
+\\
+\\
+\begin{array}{l}
+(p+(1-p))^n\\
+=p^{n} +C_{1}^{n}  \cdot p^{n-1} \left ( 1-p \right ) +C_{2}^{n }  \cdot p^{n-2} \left ( 1-p \right )^{2} +\dots +C_{G-1}^{n}  \cdot p^{n-\left ( n-1 \right ) } \left ( 1-p \right )^{n-1} +\left ( 1-p \right ) ^{n}\\
+\end{array}
+\\
+\\
+\\
+By the General Term of Binomial Theorem, $(p+(1-p))^n$ can be expanded as above.
+\\
+\\
+As we know that if there is at least one people inflected in the group, the number of test needed for the whole group is $(n+1)$ and if nobody was inflected in the group, only 1 test will be used. To find out T(p), we can multiply 1 to $(1-p)^n$ and multiply $(n+1)$ to all the terms remaining, such that the general term of expecting number of tests can be given out by:
+\\
+\\
+\begin{array}{l}
+T(p)=\left ( n+1 \right ) \left [ p^{n} +C_{1}^{n }  \cdot p^{n-1} \left ( 1-p \right ) +C_{2}^{n }  \cdot p^{n-2} \left ( 1-p \right )^{2} +\dots +C_{n-1}^{n }  \cdot p^{n-\left ( n-1 \right ) } \left ( 1-p \right )^{n-1} \right ]\\+\left 1( 1-p \right ) ^{n}
+\end{array}
+\\
+\\
+\\
+By this general term, we don't need to count the combinations one by one like in the past, which dramatically increased the efficiency. Also, with less complexity, we can develop a program using Python and MATLAB easily to generate the equation of the expected value T(p) and find out the range of p $(p<)$ of any group size n . We also included the results when n = 2 to 100 from our calculation. \textbf{[Appendix 9.1]}
